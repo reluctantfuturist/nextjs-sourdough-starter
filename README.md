@@ -1,4 +1,4 @@
-![Logo of the project](https://raw.githubusercontent.com/reluctantfuturist/nextjs-sourdough-starter/master/logo.png)
+![Logo of the project](https://raw.githubusercontent.com/reluctantfuturist/nextjs-sourdough-starter/main/public/images/blog/logo.png)
 
 # Next.js Sourdough Starter
 
