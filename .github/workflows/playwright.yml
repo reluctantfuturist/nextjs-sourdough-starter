@@ -1,0 +1,44 @@
+name: Playwright Tests
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test_setup:
+    name: Test setup
+    runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+  test_e2e:
+    needs: test_setup
+    name: Playwright tests
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+  
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+  
+      # Install dependencies with pnpm
+      - name: Install Dependencies
+        run: pnpm install
+  
+      # Install Playwright dependencies
+      - name: Install Playwright Dependencies
+        run: npx playwright install --with-deps
+  
+      # Your test script goes here
+      - name: Run Playwright Tests
+        run: npm run test:e2e
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}

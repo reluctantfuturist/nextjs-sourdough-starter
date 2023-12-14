@@ -1,0 +1,19 @@
+node_modules
+.DS_Store
+.env.local
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# contentlayer
+.contentlayer
+.vscode
+.node_modules
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
