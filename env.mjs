@@ -23,6 +23,7 @@ export const env = createEnv({
     OPENAI_API_KEY: z.string().min(1),
     OPENAI_ASSISTANT_ID: z.string().min(1),
     MAILCHIMP_API_KEY: z.string().min(1),
+    MAILCHIMP_AUDIENCE_ID: z.string().min(1),
     TRIAL_PERIOD_DAYS: z.string().min(1),
   },
   client: {
@@ -49,6 +50,7 @@ export const env = createEnv({
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     OPENAI_ASSISTANT_ID: process.env.OPENAI_ASSISTANT_ID,
     MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
+    MAILCHIMP_AUDIENCE_ID: process.env.MAILCHIMP_AUDIENCE_ID,
     TRIAL_PERIOD_DAYS: process.env.TRIAL_PERIOD_DAYS,
   },
 })

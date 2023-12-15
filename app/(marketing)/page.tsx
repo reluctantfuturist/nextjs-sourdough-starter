@@ -10,6 +10,7 @@ import {
   GhostIcon,
   PrivacyIcon,
 } from "@/components/ui/svg-icons"
+import { EmailSignupForm } from "@/components/email-signup-form"
 
 export default async function IndexPage() {
   return (
@@ -32,12 +33,7 @@ export default async function IndexPage() {
             This is a starter template for a NextJS app.
           </p>
           <div className="space-x-4">
-            <Link
-              href="/register"
-              className={cn(buttonVariants({ size: "lg" }))}
-            >
-              Get Started
-            </Link>
+            <EmailSignupForm />
           </div>
         </div>
       </section>
