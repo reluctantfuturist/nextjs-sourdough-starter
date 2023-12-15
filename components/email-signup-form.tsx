@@ -80,7 +80,7 @@ export function EmailSignupForm() {
             </Button>
           </form>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            By subscribing, you agree to our
+            By subscribing, you agree to our{" "}
             <Link className="underline underline-offset-2" href="/terms">
               Terms & Conditions
             </Link>
