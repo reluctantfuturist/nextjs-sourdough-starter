@@ -1,16 +1,17 @@
 // app/api/subscribe/route.ts
 
-import type { NextApiRequest, NextApiResponse } from "next"
 import * as z from "zod"
 
-export const dynamic = "force-dynamic"
+import { emailSchema } from "@/lib/validations/email"
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   try {
-    const { email } = JSON.parse(req.body)
+    const body = await req.text()
+    const parsedBody = emailSchema.parse(JSON.parse(body))
+    const { email } = parsedBody
 
     if (!email) {
-      return res.status(401).json({ error: "Email is required" })
+      return new Response(null, { status: 401 })
     }
 
     const mailChimpData = {
@@ -35,14 +36,12 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     const data = await response.json()
     // Error handling.
     if (data.errors[0]?.error) {
-      return res.status(401).json({ error: data.errors[0].error })
+      return new Response(null, { status: 401 })
     } else {
-      return res.status(200).json({ success: true })
+      return new Response(null, { status: 200 })
     }
   } catch (e) {
     console.error("Error in POST /api/subscribe:", e)
-    return res
-      .status(401)
-      .json({ error: "Something went wrong, please try again later." })
+    return new Response(null, { status: 401 })
   }
 }
