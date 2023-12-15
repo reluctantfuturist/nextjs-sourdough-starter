@@ -34,14 +34,10 @@ export async function POST(req: Request) {
     })
 
     const data = await response.json()
-    // Error handling.
-    if (data.errors[0]?.error) {
-      return new Response(null, { status: 401 })
-    } else {
-      return new Response(null, { status: 200 })
-    }
-  } catch (e) {
-    console.error("Error in POST /api/subscribe:", e)
-    return new Response(null, { status: 401 })
+
+    return new Response(JSON.stringify({ success: true }), { status: 200 })
+  } catch (error) {
+    console.error("Error in GET /api/subscribe:", error)
+    return new Response(null, { status: 500 })
   }
 }
