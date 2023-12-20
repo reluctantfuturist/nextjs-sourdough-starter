@@ -1,7 +1,6 @@
 {
-  "name": "sourdough",
+  "name": "@reluctantfuturist/sourdough",
   "version": "0.0.1",
-  "private": true,
   "author": "reluctantfuturist (https://twitter.com/quasifuturist)",
   "scripts": {
     "dev": "concurrently \"contentlayer dev\" \"next dev\"",
@@ -15,7 +14,9 @@
     "migrate:postgres": "dotenv -e .env.local -- npx prisma migrate deploy",
     "test:e2e": "playwright test"
   },
-  "dependencies": {
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },  "dependencies": {
     "@faker-js/faker": "^8.3.1",
     "@hookform/resolvers": "^3.1.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
